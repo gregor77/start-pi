@@ -1,6 +1,6 @@
 import RPi.GPIO as GPIO
 
-import Tkinter as tk
+import tkinter as tk
 
 GPIO.setmode(GPIO.BOARD)
 
