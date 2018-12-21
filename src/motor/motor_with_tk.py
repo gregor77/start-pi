@@ -1,5 +1,5 @@
 import RPi.GPIO as GPIO
-
+import time
 import tkinter as tk
 
 GPIO.setmode(GPIO.BOARD)
@@ -21,27 +21,27 @@ dir.set(1)
 
 spd = tk.DoubleVar()
 spd.set(0)
-print('spd initial value:' + type(spd))
 
 p.start(0)
 
-
 def change_dir(dr):
-    print('change_dir input: ' + dr, ' type: ' + type(dr))
-    if dr == 0:
+    intDirection = int(dr)
+    if intDirection == 0:
+        # 시계방향
         GPIO.output(AIN1, GPIO.LOW)
         GPIO.output(AIN2, GPIO.HIGH)
-    elif dr == 1:
+    elif intDirection == 1:
+        # 정지
         GPIO.output(AIN1, GPIO.LOW)
         GPIO.output(AIN2, GPIO.LOW)
-    elif dr == 2:
+    elif intDirection == 2:
+        # 반시계 방향
         GPIO.output(AIN1, GPIO.HIGH)
         GPIO.output(AIN2, GPIO.LOW)
 
 
 def change_pw(pw):
-    print('change_pw input: ' + pw, ' type: ' + type(pw))
-    p.ChangeDutyCycle(pw)
+    p.ChangeDutyCycle(float(pw))
 
 
 s1 = tk.Scale(root, label='Direction', orient='h', from_=0, to=2, variable=dir, command=change_dir)
