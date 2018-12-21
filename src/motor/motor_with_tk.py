@@ -21,32 +21,33 @@ dir.set(1)
 
 spd = tk.DoubleVar()
 spd.set(0)
+print('spd initial value:' + type(spd))
 
 p.start(0)
 
 
 def change_dir(dr):
-    print(dr)
-    if dr.get() == 0:
+    print('change_dir input: ' + dr, ' type: ' + type(dr))
+    if dr == 0:
         GPIO.output(AIN1, GPIO.LOW)
         GPIO.output(AIN2, GPIO.HIGH)
-    elif dr.get() == 1:
+    elif dr == 1:
         GPIO.output(AIN1, GPIO.LOW)
         GPIO.output(AIN2, GPIO.LOW)
-    elif dr.get() == 2:
+    elif dr == 2:
         GPIO.output(AIN1, GPIO.HIGH)
         GPIO.output(AIN2, GPIO.LOW)
 
 
 def change_pw(pw):
-    print(pw)
-    p.ChangeDutyCycle(pw.get())
+    print('change_pw input: ' + pw, ' type: ' + type(pw))
+    p.ChangeDutyCycle(pw)
 
 
 s1 = tk.Scale(root, label='Direction', orient='h', from_=0, to=2, variable=dir, command=change_dir)
 s1.pack()
 
-s2 = tk.Scale(root, label='Speed', orient='h', from_=0, to=100, variable=spd, command=change_pw)
+s2 = tk.Scale(root, label='Speed', orient='h', from_=0.0, to=100.0, variable=spd, command=change_pw)
 s2.pack()
 
 root.mainloop()
