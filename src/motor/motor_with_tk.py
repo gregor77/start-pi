@@ -26,6 +26,7 @@ p.start(0)
 
 
 def change_dir(dr):
+    print(dr)
     if dr.get() == 0:
         GPIO.output(AIN1, GPIO.LOW)
         GPIO.output(AIN2, GPIO.HIGH)
@@ -38,7 +39,8 @@ def change_dir(dr):
 
 
 def change_pw(pw):
-    p.ChangeDutyCycle(spd.get())
+    print(pw)
+    p.ChangeDutyCycle(pw.get())
 
 
 s1 = tk.Scale(root, label='Direction', orient='h', from_=0, to=2, variable=dir, command=change_dir)
