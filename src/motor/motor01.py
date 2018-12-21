@@ -9,9 +9,9 @@ PWMA = 12
 
 c_step = 10
 
-GPIO.setup(AIN1, GPIO.OUT, initial = GPIO.LOW)
-GPIO.setup(AIN2, GPIO.OUT, initial = GPIO.LOW)
-GPIO.setup(PWMA, GPIO.OUT, initial = GPIO.LOW)
+GPIO.setup(AIN1, GPIO.OUT, initial=GPIO.LOW)
+GPIO.setup(AIN2, GPIO.OUT, initial=GPIO.LOW)
+GPIO.setup(PWMA, GPIO.OUT, initial=GPIO.LOW)
 
 p = GPIO.PWM(PWMA, 100)
 
@@ -28,7 +28,7 @@ try:
             time.sleep(0.5)
         GPIO.output(AIN1, GPIO.LOW)
         time.sleep(0.5)
-        
+
         GPIO.output(AIN2, GPIO.HIGH)
         for pw in range(0, 101, c_step):
             p.ChangeDutyCycle(pw)
@@ -37,7 +37,7 @@ try:
             p.ChangeDutyCycle(pw)
             time.sleep(0.5)
         GPIO.output(AIN2, GPIO.LOW)
-        
+
         time.sleep(0.5)
 except KeyboardInterrupt:
     pass
