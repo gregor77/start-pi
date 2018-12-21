@@ -21,3 +21,19 @@
  빵판에 연결해서 사용해야 한다.
   - 그렇게 된다면 그림 4-37의 배선도 그림과 반대로 회로를 연결해야 하기때문에 헷갈릴 수 있다. 
 
+* p.306 첨부 코드에서 def change_dir(dr) 함수에서 오타 있음.
+```python
+함수에 파라미터로 전달받은 dr 변수 사용하게끔 변경 필요
+
+def change_dir(dr):
+    if (dr.get == 0):
+         GPIO.output(AIN1, GPIO.LOW)
+         GPIO.output(AIN2, GPIO.HIGH)
+    elif(dr.get() == 1):
+        GPIO.output(AIN1, GPIO.LOW)
+        GPIO.output(AIN2, GPIO.LOW)
+    elif(dr.get() == 2):
+        GPIO.output(AIN1, GPIO.HIGH)
+        GPIO.output(AIN2, GPIO.LOW)
+    
+```
