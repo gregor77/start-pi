@@ -21,19 +21,29 @@
  빵판에 연결해서 사용해야 한다.
   - 그렇게 된다면 그림 4-37의 배선도 그림과 반대로 회로를 연결해야 하기때문에 헷갈릴 수 있다. 
 
-* p.306 첨부 코드에서 def change_dir(dr) 함수에서 오타 있음.
+* p.306 첨부 코드대로 동작되지 않는다. 함수만 리팩토링 필요
+  - 함수내에서 파라미터로 전달받은 변수 사용하는 것으로 변경
+  - Scale에 variable에 매핑된 값의 경우 str 타입의 value만 들어오기 때문에 get() 메소드 사용할 필요가 없음
+  - tk.Scale에서 variable로 전달받는 변수 타입의 경우, str이다. 따라서 각 함수에 맞는 int, float로 type 변환이 필요
 ```python
-함수에 파라미터로 전달받은 dr 변수 사용하게끔 변경 필요
+코드 4-8 tk_Motor_01.py 코드 변경
+# 다른 부분은 동일하고, 함수 선언부분만 변경 필요하다.
 
 def change_dir(dr):
-    if (dr.get == 0):
-         GPIO.output(AIN1, GPIO.LOW)
-         GPIO.output(AIN2, GPIO.HIGH)
-    elif(dr.get() == 1):
+    direction = int(dr) # str를 int로 타입변경
+    if direction == 0:
+        GPIO.output(AIN1, GPIO.LOW)
+        GPIO.output(AIN2, GPIO.HIGH)
+    elif direction == 1:
         GPIO.output(AIN1, GPIO.LOW)
         GPIO.output(AIN2, GPIO.LOW)
-    elif(dr.get() == 2):
+    elif direction == 2:
         GPIO.output(AIN1, GPIO.HIGH)
         GPIO.output(AIN2, GPIO.LOW)
+
+
+def change_pw(pw):
+    p.ChangeDutyCycle(float(pw)) # str를 float로 타입변경
+
     
 ```
