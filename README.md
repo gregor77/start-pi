@@ -47,3 +47,8 @@ def change_pw(pw):
 
     
 ```
+
+* p.311 코드 4-9 **step motor** 동일한 코드 2번 반복
+  - 테스트로 전달받은 step motor 모델(28BYJ-48)과 교재 step motor 모델(ST-42BYG506H)이 다르다.
+  - p.308에 그림 4-40 스테핑 모터 제어 신호 다르고, 그림 4-41 실체 배선도를 그대로 사용할 수 없다.
+  - step motor 모델(28BYJ-48) : https://components101.com/motors/28byj-48-stepper-motor
