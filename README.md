@@ -62,5 +62,13 @@ def change_pw(pw):
     동작하지 않는 원인을 파악하기 어렵다.
   - SG90 데이터시트 : http://www.ee.ic.ac.uk/pcheung/teaching/DE1_EE/stores/sg90_datasheet.pdf
 
-* p.321 코드 4-12 change_dc 함수에 매개변수 오타 dum -> deg
+* p.321 코드 4-12에 change_dc 함수 변경 필요
+  - 함수 매개변수 오타 변경. dum -> deg
+  - 입력 매개변수 deg의 타입은 str이기 때문에 float함수를 통해서 타입 변경필요.
+  - str타입은 get 함수를 가지고 있지 않기 때문에 실제 테스트시에 에러 발생한다.
+```python
+def change_dc(deg):
+    dc = ((float(deg) - deg_min) * (dc_max - dc_min) / (deg_max - deg_min) + dc_min)
+    p.ChangeDutyCycle(dc)
+```
   
