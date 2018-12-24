@@ -61,4 +61,6 @@ def change_pw(pw):
   - 1) SG90 모델은 4.8v ~ 5v 사이에서 동작 2) AA 3개 들어가는 건전지 박스가 없는 경우 입문자 입장에서는 왜 회로대로 연결했음에도
     동작하지 않는 원인을 파악하기 어렵다.
   - SG90 데이터시트 : http://www.ee.ic.ac.uk/pcheung/teaching/DE1_EE/stores/sg90_datasheet.pdf
+
+* p.321 코드 4-12 change_dc 함수에 매개변수 오타 dum -> deg
   
