@@ -22,7 +22,7 @@ deg = tk.DoubleVar()
 deg.set(0)
 
 def change_dc(deg):
-    dc = ((deg.get() - deg_min) * (dc_max - dc_min) / (deg_max - deg_min) + dc_min)
+    dc = ((float(deg) - deg_min) * (dc_max - dc_min) / (deg_max - deg_min) + dc_min)
     print('change_dc, dc:' + str(dc))
     p.ChangeDutyCycle(dc)
 
