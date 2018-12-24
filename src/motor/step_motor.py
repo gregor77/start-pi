@@ -17,8 +17,6 @@ sig_pink = [1, 1, 1, 0, 0, 0, 1, 1]
 
 step = 100
 
-dir = 1
-
 GPIO.setup(BLUE_AIN1, GPIO.OUT, initial=GPIO.LOW)
 GPIO.setup(PINK_BIN1, GPIO.OUT, initial=GPIO.LOW)
 GPIO.setup(YELLOW_AIN2, GPIO.OUT, initial=GPIO.LOW)
@@ -35,7 +33,6 @@ try:
 
             time.sleep(0.01)
 
-        dir = dir * -1
 except KeyboardInterrupt:
     pass
 
