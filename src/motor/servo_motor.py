@@ -23,11 +23,13 @@ try:
     while 1:
         for deg in range(0, 181, 10):
             dc = convert_dc(float(deg))
+            print('1. dc: ' + str(dc))
             p.ChangeDutyCycle(dc)
             time.sleep(1)
 
         for deg in range(180, -1, -10):
             dc = convert_dc(float(deg))
+            print('2. dc: ' + str(dc))
             p.ChangeDutyCycle(dc)
             time.sleep(1)
 except KeyboardInterrupt:
