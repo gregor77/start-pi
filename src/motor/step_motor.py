@@ -5,31 +5,33 @@ import time
 
 GPIO.setmode(GPIO.BOARD)
 
-AIN1 = 15   # yellow
-BIN1 = 16   # orange
-AIN2 = 18   # blue
-BIN2 = 22   # pink
+BLUE_AIN1 = 15     # blue
+PINK_BIN1 = 16     # pink
+YELLOW_AIN2 = 18   # yellow
+ORANGE_BIN2 = 22   # orange
 
-sig = [[1, 0, 0, 0, 1, 1, 1, 1], [0, 0, 1, 1, 1, 1, 1, 0], [1, 1, 1, 1, 1, 0, 0, 0], [1, 1, 1, 0, 0, 0, 1, 1]]
+sig_yellow = [1, 0, 0, 0, 1, 1, 1, 1]
+sig_orange = [0, 0, 1, 1, 1, 1, 1, 0]
+sig_blue = [1, 1, 1, 1, 1, 0, 0, 0]
+sig_pink = [1, 1, 1, 0, 0, 0, 1, 1]
 
 step = 100
 
 dir = 1
 
-GPIO.setup(AIN1, GPIO.OUT, initial=GPIO.LOW)
-GPIO.setup(BIN1, GPIO.OUT, initial=GPIO.LOW)
-GPIO.setup(AIN2, GPIO.OUT, initial=GPIO.LOW)
-GPIO.setup(BIN2, GPIO.OUT, initial=GPIO.LOW)
+GPIO.setup(BLUE_AIN1, GPIO.OUT, initial=GPIO.LOW)
+GPIO.setup(PINK_BIN1, GPIO.OUT, initial=GPIO.LOW)
+GPIO.setup(YELLOW_AIN2, GPIO.OUT, initial=GPIO.LOW)
+GPIO.setup(ORANGE_BIN2, GPIO.OUT, initial=GPIO.LOW)
 
 try:
     while 1:
         for cnt in range(0, step):
-            cnt = cnt % 4
-
-            GPIO.output(AIN1, sig[0][cnt])
-            GPIO.output(BIN1, sig[1][cnt])
-            GPIO.output(AIN2, sig[2][cnt])
-            GPIO.output(BIN2, sig[3][cnt])
+            cnt = cnt % 7
+            GPIO.output(ORANGE_BIN2, sig_orange[cnt])
+            GPIO.output(YELLOW_AIN2, sig_yellow[cnt])
+            GPIO.output(PINK_BIN1, sig_pink[cnt])
+            GPIO.output(BLUE_AIN1, sig_blue[cnt])
 
             time.sleep(0.01)
 
