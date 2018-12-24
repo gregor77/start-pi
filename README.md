@@ -54,8 +54,6 @@ def change_pw(pw):
 ```
 
 * p.311 코드 4-9 **step motor** 동일한 코드 2번 반복
-  - **모터 드라이버 IC 모듈에 있는 칩 부분 손으로 만지지 않도록 주의가 있으면 좋을 것 같습니다.** 실제로 회로를 잘못 연결해서
-   돌아가는지 확인하려고 손으로 만지다 모듈에 화상을 입을 수 있음.
   - 테스트로 전달받은 step motor 모델(28BYJ-48)과 교재 step motor 모델(ST-42BYG506H)이 다르다.
   - p.308에 그림 4-40 스테핑 모터 제어 신호 다르고, 그림 4-41 실체 배선도를 그대로 사용할 수 없다.
   - step motor 모델(28BYJ-48) : https://components101.com/motors/28byj-48-stepper-motor
@@ -77,5 +75,20 @@ def change_dc(deg):
     p.ChangeDutyCycle(dc)
 ```
 
-#### 2. 추가되었으면 하는 점
-  
+#### 2. 책에 추가로 작성되면 좋을 것 같은 내용
+* 4.3, 4.4, 4.5에 모터 드라이버 IC 모듈을 사용시 주의하라고 알림 내용 추가
+  - DC 모터와 step 모터를 사용할때 모터 드라이버 IC 모듈을 사용한다.
+  - 회로를 잘못 구성하여 동작하지 않는 경우, 전원은 들어오지만 모터가 동작하지 않는다.
+  - 이럴때 모터 드라이버 IC 모듈의 노출면을 손으로 잡는 경우 손가락 화상이 발생할 수 있다.
+```python
+[주의]
+동작하지 않는 경우, 반드시 라즈베리 파이 전원이나 건전지 전원을 제거하고 회로 및 부품을 확인하시오.
+손가락 화상의 우려가 있을 수 있습니다.
+```
+* p.331 코드 4-13. 파일명 작성 주의
+  - 책 내용처럼 picamera_01.py로 하면 아무 문제 없지만, picamera.py로 잘못 입력하는 경우,
+picamera 모듈에서 PiCamera()를 찾을 수 없다는 에러 메세지가 발생하면서 스크립트가 중단된다.
+```python
+# picamera FAQ(https://picamera.readthedocs.io/en/release-1.13/faq.html)
+5.1. AttributeError: ‘module’ object has no attribute ‘PiCamera’
+```
